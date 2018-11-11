@@ -7,7 +7,7 @@ using namespace eosio;
 
 
 // @abi table
-struct queryid
+struct oqueryid
 {
     uint64_t key;
     checksum256 qid;
@@ -16,7 +16,7 @@ struct queryid
     uint64_t primary_key() const { return key; }
 };
 
-typedef eosio::multi_index<N(queryid), queryid> ds_queryid;
+typedef eosio::multi_index<N(oqueryid), oqueryid> ds_oqueryid;
 
 
 class example3 : public eosio::contract {
@@ -28,7 +28,7 @@ class example3 : public eosio::contract {
          checksum256 myQueryId = oraclize_query("URL", "json(https://api.kraken.com/0/public/Ticker?pair=EOSUSD).result.EOSUSD.l.0");
 
          // let's save the queryid in a local table
-         ds_queryid queryids(_self, _self);
+         ds_oqueryid queryids(_self, _self);
          uint64_t myQueryId_short;
          std::memcpy(&myQueryId_short, &myQueryId.hash, sizeof(myQueryId_short));
          queryids.emplace( _self, [&]( auto& o ) {
@@ -44,7 +44,7 @@ class example3 : public eosio::contract {
       void callback( checksum256 queryId, std::vector<unsigned char> result, std::vector<unsigned char> proof ) {
          require_auth(oraclize_cbAddress());
 
-         ds_queryid queryids(_self, _self);
+         ds_oqueryid queryids(_self, _self);
          uint64_t myQueryId_short;
          std::memcpy(&myQueryId_short, &queryId.hash, sizeof(myQueryId_short));
          std::string queryId_str__expected = checksum256_to_string(queryids.find(myQueryId_short)->qid);
