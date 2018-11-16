@@ -6,7 +6,7 @@
 using namespace eosio;
 
 
-class example4 : public eosio::contract {
+class usdprice : public eosio::contract {
   public:
       using contract::contract;
 
@@ -17,7 +17,7 @@ class example4 : public eosio::contract {
       }
 
       /// @abi action
-      void callback( checksum256 queryId, std::vector<unsigned char> result, std::vector<unsigned char> proof ) {
+      void callback( checksum256 queryId, std::vector<uint8_t> result, std::vector<uint8_t> proof ) {
          require_auth(oraclize_cbAddress());
 
          print("Proof: ", proof.size());
@@ -25,4 +25,4 @@ class example4 : public eosio::contract {
 
 };
 
-EOSIO_ABI(example4, (execquery)(callback))
+EOSIO_ABI(usdprice, (execquery)(callback))

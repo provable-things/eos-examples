@@ -6,7 +6,7 @@
 using namespace eosio;
 
 
-class example1 : public eosio::contract {
+class eosprice : public eosio::contract {
   public:
       using contract::contract;
 
@@ -26,4 +26,4 @@ class example1 : public eosio::contract {
 
 };
 
-EOSIO_ABI(example1, (getprice)(callback))
+EOSIO_ABI(eosprice, (getprice)(callback))

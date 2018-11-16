@@ -6,7 +6,7 @@
 using namespace eosio;
 
 
-class example2 : public eosio::contract {
+class wolframrand : public eosio::contract {
   public:
       using contract::contract;
 
@@ -17,7 +17,7 @@ class example2 : public eosio::contract {
       }
 
       /// @abi action
-      void callback( checksum256 queryId, std::vector<unsigned char> result, std::vector<unsigned char> proof ) {
+      void callback( checksum256 queryId, std::vector<uint8_t> result, std::vector<uint8_t> proof ) {
          require_auth(oraclize_cbAddress());
 
          std::string result_str = vector_to_string(result);
@@ -28,4 +28,4 @@ class example2 : public eosio::contract {
 
 };
 
-EOSIO_ABI(example2, (getrandomnum)(callback))
+EOSIO_ABI(wolframrand, (getrandomnum)(callback))
