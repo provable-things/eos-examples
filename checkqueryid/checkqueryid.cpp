@@ -8,14 +8,14 @@ class checkqueryid : public eosio::contract {
     using contract::contract;
 
     /// @abi action 
-    void testquery() {
+    void checkquery() {
       checksum256 myQueryId = oraclize_query("URL", "json(https://api.kraken.com/0/public/Ticker?pair=EOSUSD).result.EOSUSD.l.0");	
-      oraclize_emplaceQueryId_local(myQueryID);
+      oraclize_emplaceQueryId_local(myQueryId);
       print("Oraclize query was sent & queryId saved in a tbl record, standing by for the answer..");  
     }
 
     /// @abi action
-    void callback( checksum256 queryId, std::vector<uint8_t> result, std::vector<uint8_t> proof ) {
+    void callback( checksum256 queryId, std::vector<unsigned char> result, std::vector<unsigned char> proof ) {
       require_auth(oraclize_cbAddress());
       
       // get the queryid saved in the local table after calling the testquery action
@@ -29,12 +29,12 @@ class checkqueryid : public eosio::contract {
       } 
       else 
       {      
-        print("QueryId:", queryId_str);
+        print("QueryId: ", queryId_str);
         std::string result_str = vector_to_string(result);
-        print("Result:", result_str);
+        print(" Result: ", result_str);
       }
     }
 
 };
 
-EOSIO_ABI(checkqueryid, (testquery)(callback))
+EOSIO_ABI(checkqueryid, (checkquery)(callback))

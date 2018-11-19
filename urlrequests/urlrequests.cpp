@@ -27,12 +27,13 @@ public:
     require_auth(oraclize_cbAddress());
     
     std::string result_str = vector_to_string(result);
-    print("Balance: ", result_str);
+    print("Response: ", result_str);
   }
 
   /// @abi action        
   void reqheadscust()
   {
+    print("Sending query to Oraclize...");
     request("json(QmdKK319Veha83h6AYgQqhx9YRsJ9MJE7y33oCXyZ4MqHE).headers",
             "GET",
       	    "http://httpbin.org/headers",
@@ -81,4 +82,4 @@ public:
   }
 };
 
-EOSIO_ABI(mycontract1a, (reqheadscust)(reqbaseauth)(reqpost)(reqput)(reqcookies)(callback))
+EOSIO_ABI(urlrequests, (reqheadscust)(reqbasauth)(reqpost)(reqput)(reqcookies)(callback))

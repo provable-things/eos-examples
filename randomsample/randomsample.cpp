@@ -9,7 +9,7 @@ public:
   using contract::contract;
 
   /// @abi action
-  void callback(checksum256 queryId, std::vector<uint8_t> result, std::vector<uint8_t> proof)
+  void callback(checksum256 queryId, std::vector<unsigned char> result, std::vector<unsigned char> proof)
   {
     require_auth(oraclize_cbAddress());
 
@@ -21,15 +21,17 @@ public:
     {
       uint8_t result_int = 0;
       std::memcpy(&result_int, &result[0], result.size());
-      print("Number: ", result_int);
+      print("Number: ");
+      printi(result_int);
     }
   }
 
   /// @abi action        
-  void getrandnum()
+  void getrandnum() 
   {    
+    print("Sending query to Oraclize...");
     uint8_t N = 1; // Possible outputs: [0-255]
-    unsigned long delay = 10; 
+    uint32_t delay = 10; 
     oraclize_newRandomDSQuery(delay, N);
   }
 };

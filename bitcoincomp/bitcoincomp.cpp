@@ -22,11 +22,12 @@ public:
   {    
       std::string bitcoinAddress = "3D2oetdNuZUqQHPJmcMDDHYoqkyNVsFk9r";
       std::vector<std::vector<uint8_t>> myquery = {
-           string_to_vecotr("QmaMFiHXSqCFKkGPbWZh5zKmM827GWNpk9Y1EYhoLfwdHq"), 
+           string_to_vector("QmaMFiHXSqCFKkGPbWZh5zKmM827GWNpk9Y1EYhoLfwdHq"), 
            string_to_vector(bitcoinAddress)
       };
+      print("Sending query to Oraclize...");
       oraclize_query("computation", myquery);
   }
 };
 
-EOSIO_ABI(mycontract1a, (compute)(callback))
+EOSIO_ABI(bitcoincomp, (compute)(callback))

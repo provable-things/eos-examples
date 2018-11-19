@@ -13,7 +13,7 @@ class wolframrand : public eosio::contract {
       /// @abi action 
       void getrandomnum() {
          oraclize_query(10, "WolframAlpha", "random number between 1 and 6");
-         print("Oraclize query was sent, standing by for the answer..");  
+         print(" Oraclize query was sent, standing by for the answer...");  
       }
 
       /// @abi action
