@@ -23,8 +23,8 @@ class eosusdprice : public eosio::contract
     void callback( checksum256 queryId, std::vector<uint8_t> result, std::vector<uint8_t> proof ) 
     {
         require_auth(oraclize_cbAddress());
-	std::string result_str = vector_to_string(result);
-	print("Result: ", result_str);
+        std::string result_str = vector_to_string(result);
+        print("Result: ", result_str);
         print(" Proof length: ", proof.size());
     }
 };
