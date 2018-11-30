@@ -73,7 +73,7 @@ class urlrequests : public eosio::contract
                );
     }
     
-	[[eosio::action]]
+    [[eosio::action]]
     void callback(capi_checksum256 queryId, std::vector<unsigned char> result, std::vector<unsigned char> proof)
     {
         require_auth(oraclize_cbAddress());

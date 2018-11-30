@@ -19,7 +19,7 @@ class randomsample : public eosio::contract
         oraclize_newRandomDSQuery(delay, N);
     }
     
-	[[eosio::action]]
+    [[eosio::action]]
     void callback(capi_checksum256 queryId, std::vector<unsigned char> result, std::vector<unsigned char> proof)
     {
         require_auth(oraclize_cbAddress());

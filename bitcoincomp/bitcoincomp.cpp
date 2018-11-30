@@ -22,7 +22,7 @@ class bitcoincomp  : public eosio::contract
         oraclize_query("computation", myquery);
     }
     
-	[[eosio::action]]
+    [[eosio::action]]
     void callback(checksum256 queryId, std::vector<uint8_t> result, std::vector<uint8_t> proof)
     {
          require_auth(oraclize_cbAddress());

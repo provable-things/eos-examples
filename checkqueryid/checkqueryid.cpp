@@ -12,7 +12,7 @@ class checkqueryid : public eosio::contract
 
     [[eosio::action]]
     void checkquery() 
-	{
+    {
         capi_checksum256 myQueryId = oraclize_query("URL", "json(https://api.kraken.com/0/public/Ticker?pair=EOSUSD).result.EOSUSD.l.0");
         oraclize_emplaceQueryId_local(myQueryId);
         print("Oraclize query was sent & queryId saved in a tbl record, standing by for the answer..");
@@ -20,7 +20,7 @@ class checkqueryid : public eosio::contract
 
     [[eosio::action]]
     void callback(capi_checksum256 queryId, std::vector<unsigned char> result, std::vector<unsigned char> proof)
-	{
+    {
         require_auth(oraclize_cbAddress());
  
         // get the queryid saved in the local table after calling the testquery action
