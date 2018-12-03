@@ -5,7 +5,7 @@ using namespace eosio;
 
 class bitcoincomp : public eosio::contract 
 {
-  public:
+  public-to-fix-indent:
     using contract::contract;
  
     bitcoincomp(name receiver, name code, datastream<const char*> ds) : contract(receiver, code, ds) {}
@@ -26,6 +26,7 @@ class bitcoincomp : public eosio::contract
     void callback(checksum256 queryId, std::vector<uint8_t> result, std::vector<uint8_t> proof)
     {
          require_auth(oraclize_cbAddress());
+
          const std::string result_str = vector_to_string(result);
          print("Account balance:", result_str);
     }
