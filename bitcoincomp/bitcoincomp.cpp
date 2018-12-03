@@ -3,7 +3,7 @@
 using namespace eosio;
 
 
-class bitcoincomp  : public eosio::contract 
+class bitcoincomp : public eosio::contract 
 {
   public:
     using contract::contract;

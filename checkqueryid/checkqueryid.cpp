@@ -3,7 +3,8 @@
 using namespace eosio;
 
 
-class checkqueryid : public eosio::contract {
+class checkqueryid : public eosio::contract 
+{
   public:
     using contract::contract;
     
