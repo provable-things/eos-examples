@@ -11,14 +11,16 @@ class checkqueryid : public eosio::contract
    checkqueryid(name receiver, name code, datastream<const char*> ds) : contract(receiver, code, ds) {}
 
     [[eosio::action]] 
-    void checkquery() {
+    void checkquery() 
+	{
       capi_checksum256 myQueryId = oraclize_query("URL", "json(https://api.kraken.com/0/public/Ticker?pair=EOSUSD).result.EOSUSD.l.0");
       oraclize_queryId_localEmplace(myQueryId);
       print("Oraclize query was sent & queryId saved in a tbl record, standing by for the answer..");
     }
 
     [[eosio::action]]
-    void callback(capi_checksum256 queryId, std::vector<unsigned char> result, std::vector<unsigned char> proof) {
+    void callback(capi_checksum256 queryId, std::vector<unsigned char> result, std::vector<unsigned char> proof) 
+	{
       require_auth(oraclize_cbAddress());
       
       if (!oraclize_queryId_match(queryId))
