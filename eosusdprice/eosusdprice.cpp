@@ -19,7 +19,7 @@ class eosusdprice : public eosio::contract
       }
 
       [[eosio::action]]
-      void callback( checksum256 queryId, std::vector<uint8_t> result, std::vector<uint8_t> proof )
+      void callback(checksum256 queryId, std::vector<uint8_t> result, std::vector<uint8_t> proof)
       {
           require_auth(oraclize_cbAddress());
           
