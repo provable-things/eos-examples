@@ -1,6 +1,3 @@
-#include <eosiolib/eosio.hpp>
-#include <eosiolib/print.hpp>
-
 #include "oraclize/eos_api.hpp"
 
 using namespace eosio;
