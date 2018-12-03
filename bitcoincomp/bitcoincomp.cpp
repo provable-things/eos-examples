@@ -5,7 +5,7 @@ using namespace eosio;
 
 class bitcoincomp : public eosio::contract 
 {
-  public-to-fix-indent:
+  public:
     using contract::contract;
  
     bitcoincomp(name receiver, name code, datastream<const char*> ds) : contract(receiver, code, ds) {}
