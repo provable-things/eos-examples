@@ -31,7 +31,6 @@ class checkqueryid : public eosio::contract {
         print(" Result: ", result_str);
       }
     }
-
 };
 
 EOSIO_DISPATCH(checkqueryid, (checkquery)(callback))
