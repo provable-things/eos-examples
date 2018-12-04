@@ -2,7 +2,7 @@
 
 This repo is to demonstrate how you would work with the Oraclize **random** datasource.
 
-The `random-datasource` example allows you to *retreive a random number*.
+The `randomsample` example allows you to *retreive a random number*.
 
 ## Notes
 

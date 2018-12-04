@@ -2,7 +2,7 @@
 
 This repo is to demonstrate how you would work with the Oraclize **URL** datasource.
 
-The `eos-usd-price` example allows you to *retreive the eos token price in usd*.
+The `eosusdprice` example allows you to *retreive the eos token price in usd*.
 
 ## Notes
 
