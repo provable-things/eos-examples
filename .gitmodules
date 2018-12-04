@@ -1,0 +1,18 @@
+[submodule "bitcoin-computation/oraclize"]
+	path = bitcoin-computation/oraclize
+	url = https://github.com/oraclize/eos-api
+[submodule "check-queryid/oraclize"]
+	path = check-queryid/oraclize
+	url = https://github.com/oraclize/eos-api
+[submodule "eos-usd-price/oraclize"]
+	path = eos-usd-price/oraclize
+	url = https://github.com/oraclize/eos-api
+[submodule "random-datasource/oraclize"]
+	path = random-datasource/oraclize
+	url = https://github.com/oraclize/eos-api
+[submodule "url-requests-computation/oraclize"]
+	path = url-requests-computation/oraclize
+	url = https://github.com/oraclize/eos-api
+[submodule "wolfram-alpha/oraclize"]
+	path = wolfram-alpha/oraclize
+	url = https://github.com/oraclize/eos-api
