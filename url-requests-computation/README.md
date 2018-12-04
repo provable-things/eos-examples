@@ -2,7 +2,7 @@
 
 This repo is to demonstrate how you would work with the Oraclize **computation** datasource.
 
-The `urlrequests` example allows you to *retreive the response of several URL requests*.
+The `urlrequests` example allows you to *retrive the response of several URL requests*.
 
 ## Notes
 
