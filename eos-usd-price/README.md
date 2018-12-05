@@ -2,7 +2,7 @@
 
 This repo is to demonstrate how you would work with the Oraclize **URL** datasource.
 
-The `eosusdprice` example allows you to *retrive the eos token price in usd*.
+The `eosusdprice.cpp` example allows you to *retrieve the eos token price in usd*.
 
 ## Notes
 
