@@ -2,7 +2,7 @@
 
 This repo is to demonstrate how you would work with the Oraclize **URL** datasource.
 
-The `checkqueryid` example allows you to *retrive the eos token price in usd, and check if the query id of
+The `checkqueryid.cpp` example allows you to retrieve the eos token price in usd, and check if the `queryId` of
 your query matches the one provided by Oraclize in the callback*.
 
 ## Notes
