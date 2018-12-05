@@ -17,7 +17,7 @@ not 6, the `callback` launches a new query*.
 
 **3)** Deploy your contract on EOS (launch this command **outside** the folder `wolfram-alpha`):
 
-**`❍ cleos set contract <your-account-name> wolfram-alpha wolframrand.wasm -p <your-account-name>@<permission>`**
+**`❍ cleos set contract <your-account-name> wolfram-alpha wolframrand.wasm wolframrand.abi -p <your-account-name>@<permission>`**
 
 **4)** Call the `getrandomnum` action of the contract `wolframrand`:
 

@@ -16,7 +16,7 @@ The `urlrequests.cpp` example allows you *to retrieve the response of several UR
 
 **3)** Deploy your contract on EOS (launch this command **outside** the folder `url-requests-computation`):
 
-**`❍ cleos set contract <your-account-name> url-requests-computation urlrequests.wasm -p <your-account-name>@<permission>`**
+**`❍ cleos set contract <your-account-name> url-requests-computation urlrequests.wasm urlrequests.abi -p <your-account-name>@<permission>`**
 
 **4)** Call the `reqheadscust` action of the contract `urlrequests`:
 

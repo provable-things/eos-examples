@@ -16,7 +16,7 @@ The `randomsample.cpp` example allows you to *retrieve a random number*.
 
 **3)** Deploy your contract on EOS (launch this command **outside** the folder `random-datasource`):
 
-**`❍ cleos set contract <your-account-name> random-datasource randomsample.wasm -p <your-account-name>@<permission>`**
+**`❍ cleos set contract <your-account-name> random-datasource randomsample.wasm randomsample.abi -p <your-account-name>@<permission>`**
 
 **4)** Call the `getrandnum` action of the contract `randomsample`:
 

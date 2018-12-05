@@ -17,7 +17,7 @@ you with the authenticity proof of the fetched data***.
 
 **3)** Deploy your contract on EOS (launch this command **outside** the folder `eos-usd-price`):
 
-**`❍ cleos set contract <your-account-name> eos-usd-price eosusdprice.wasm -p <your-account-name>@<permission>`**
+**`❍ cleos set contract <your-account-name> eos-usd-price eosusdprice.wasm eosusdprice.abi -p <your-account-name>@<permission>`**
 
 **4)** Call the `execquery` action of the contract `eosusdprice`:
 

@@ -17,7 +17,7 @@ your query matches the one provided by Oraclize in the callback*.
 
 **3)** Deploy your contract on EOS (launch this command **outside** the folder `check-queryid`):
 
-**`❍ cleos set contract <your-account-name> check-queryid checkqueryid.wasm -p <your-account-name>@<permission>`**
+**`❍ cleos set contract <your-account-name> check-queryid checkqueryid.wasm checkqueryid.abi -p <your-account-name>@<permission>`**
 
 **4)** Call the `checkquery` action of the contract `checkqueryid`:
 
