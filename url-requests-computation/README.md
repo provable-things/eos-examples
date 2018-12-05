@@ -34,7 +34,7 @@ The `urlrequests.cpp` example allows you *to retrieve the response of several UR
 
 **`❍ cleos push action <your-account-name> reqput '[]' -p <your-account-name>@<permission>`**
 
-**9)** Call the `reqcookies` action of the contract `urlrequests`:
+**8)** Call the `reqcookies` action of the contract `urlrequests`:
 
 **`❍ cleos push action <your-account-name> reqcookies '[]' -p <your-account-name>@<permission>`**
 
