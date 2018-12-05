@@ -2,7 +2,7 @@
 
 This repo is to demonstrate how you would work with the Oraclize **computation** datasource.
 
-The `urlrequests.cpp` example allows you to retrieve the response of several URL requests.
+The `urlrequests.cpp` example allows you *to retrieve the response of several URL requests*.
 
 ## Notes
 
