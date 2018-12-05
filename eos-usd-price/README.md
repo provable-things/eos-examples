@@ -3,7 +3,7 @@
 This repo is to demonstrate how you would work with the Oraclize **URL** datasource.
 
 The `eosusdprice.cpp` example allows you to *retrieve the eos token price in usd* and ***provides
-you an authenticity proof of the fetched data***.
+you with the authenticity proof of the fetched data***.
 
 ## :page_with_curl: *Instructions*
 
