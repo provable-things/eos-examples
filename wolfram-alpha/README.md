@@ -3,7 +3,7 @@
 This repo is to demonstrate how you would work with the Oraclize **WolframAlpha** datasource.
 
 The `wolframrand` example allows you to *retrive a random number from 1 to 6; and, if the number is
-not 6, the callback launches a new query*.
+not 6, the `callback` launches a new query.
 
 ## Notes
 
