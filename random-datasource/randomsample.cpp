@@ -8,8 +8,19 @@ class randomsample : public eosio::contract
   public:
     using contract::contract;
 
-    /// @abi action
-    void callback(checksum256 queryId, std::vector<uint8_t> result, std::vector<uint8_t> proof)
+    randomsample(name receiver, name code, datastream<const char*> ds) : contract(receiver, code, ds) {}
+
+    [[eosio::action]]
+    void getrandnum()
+    {
+        print("Sending query to Oraclize...");
+        uint8_t N = 1; // Possible outputs: [0-255]
+        uint32_t delay = 10;
+        oraclize_newRandomDSQuery(delay, N);
+    }
+    
+    [[eosio::action]]
+    void callback(capi_checksum256 queryId, std::vector<unsigned char> result, std::vector<unsigned char> proof)
     {
         require_auth(oraclize_cbAddress());
 
@@ -25,15 +36,6 @@ class randomsample : public eosio::contract
             printi(result_int);
         }
     }
-
-    /// @abi action        
-    void getrandnum() 
-    {    
-        print("Sending query to Oraclize...");
-        uint8_t N = 1; // Possible outputs: [0-255]
-        uint32_t delay = 10; 
-        oraclize_newRandomDSQuery(delay, N);
-    }
 };
 
-EOSIO_ABI(randomsample, (getrandnum)(callback))
+EOSIO_DISPATCH(randomsample, (getrandnum)(callback))
