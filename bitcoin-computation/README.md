@@ -6,7 +6,7 @@ The `bitcoincomp.cpp` example allows you to *retrieve the balance of a Bitcoin a
 
 ## Notes
 
-Oraclize replies to your `oraclize_query` with the *balance result* calling your `callback(...)`.
+Oraclize replies to your `oraclize_query` by calling your `callback(...)` with the *balance result* .
 You can search your transaction ID in one of the following links to verify it:
 
 * :mag_right::ledger: [Blocks.io](https://jungle.bloks.io/): a block explorer for the Jungle 2.0 testnet.
