@@ -6,7 +6,7 @@ The `eosusdprice.cpp` example allows you to *retrieve the eos token price in usd
 
 ## Notes
 
-Oraclize replies to your `oraclize_query` with the *price result* calling your `callback(...)`.
+Oraclize replies to your `oraclize_query` by calling your `callback(...)` with the *price result*.
 You can search your transaction ID in one of the following links to verify it:
 
 * :mag_right::ledger: [Blocks.io](https://jungle.bloks.io/): a block explorer for the Jungle 2.0 testnet.
