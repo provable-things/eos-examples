@@ -2,7 +2,7 @@
 
 This repo is to demonstrate how you would work with the Oraclize **computation** datasource.
 
-The `bitcoincomp` example allows you to *retrieve the balance of a Bitcoin address*.
+The `bitcoincomp.cpp` example allows you to *retrieve the balance of a Bitcoin address*.
 
 ## Notes
 
