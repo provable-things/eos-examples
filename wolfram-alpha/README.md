@@ -8,7 +8,7 @@ not 6, the callback launches a new query*.
 ## Notes
 
 Oraclize replies to your `oraclize_query` by calling your `callback(...)` with the *random number between 1 and 6 result*.
-You can search your transaction ID in one of the following links to verify it:
+You can search for your transaction ID in one of the following links to verify it:
 
 * :mag_right::ledger: [Blocks.io](https://jungle.bloks.io/): a block explorer for the Jungle 2.0 testnet.
 
