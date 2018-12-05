@@ -33,6 +33,6 @@ You can search your transaction ID in one of the following links to verify it:
 
 ## :ambulance: Support
 
-❍ If you have any issues, head on over to our [Gitter](https://gitter.im/oraclize/eos-api) channel to get timely support!
+❍  If you have any issues, head on over to our [Gitter](https://gitter.im/oraclize/eos-api) channel to get timely support!
 
 ***Happy developing!***
