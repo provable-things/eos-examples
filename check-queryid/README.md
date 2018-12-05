@@ -7,19 +7,19 @@ your query matches the one provided by Oraclize in the callback*.
 
 ## :page_with_curl: *Instructions*
 
-**1)**: Compile your contract (launch this command **inside** the folder `check-queryid`):
+**1)** Compile your contract (launch this command **inside** the folder `check-queryid`):
 
 **`❍ eosio-cpp -abigen checkqueryid.cpp -o checkqueryid.wasm`**
 
-**2)**: Unlock your wallet:
+**2)** Unlock your wallet:
 
 **`❍ cleos wallet unlock -n <your-wallet-name> --password <your-wallet-password>`**
 
-**3)**: Deploy your contract on EOS (launch this command **outside** the folder `check-queryid`):
+**3)** Deploy your contract on EOS (launch this command **outside** the folder `check-queryid`):
 
 **`❍ cleos set contract <your-account-name> check-queryid checkqueryid.wasm -p <your-account-name>@<permission>`**
 
-**4)**: Call the `checkquery` action of the contract `checkqueryid`:
+**4)** Call the `checkquery` action of the contract `checkqueryid`:
 
 **`❍ cleos push action <your-account-name> checkquery '[]' -p <your-account-name>@<permission>`**
 

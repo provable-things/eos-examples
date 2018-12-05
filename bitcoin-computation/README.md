@@ -6,19 +6,19 @@ The `bitcoincomp.cpp` example allows you to *retrieve the balance of a Bitcoin a
 
 ## :page_with_curl: *Instructions*
 
-**1)**: Compile your contract (launch this command **inside** the folder `bitcoin-computation`):
+**1)** Compile your contract (launch this command **inside** the folder `bitcoin-computation`):
 
 **`❍ eosio-cpp -abigen bitcoincomp.cpp -o bitcoincomp.wasm`**
 
-**2)**: Unlock your wallet:
+**2)** Unlock your wallet:
 
 **`❍ cleos wallet unlock -n <your-wallet-name> --password <your-wallet-password>`**
 
-**3)**: Deploy your contract on EOS (launch this command **outside** the folder `bitcoin-computation`):
+**3)** Deploy your contract on EOS (launch this command **outside** the folder `bitcoin-computation`):
 
 **`❍ cleos set contract <your-account-name> bitcoin-computation bitcoincomp.wasm -p <your-account-name>@<permission>`**
 
-**4)**: Call the `compute` action of the contract `bitcoincomp`:
+**4)** Call the `compute` action of the contract `bitcoincomp`:
 
 **`❍ cleos push action <your-account-name> compute '[]' -p <your-account-name>@<permission>`**
 

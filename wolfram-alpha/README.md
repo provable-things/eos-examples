@@ -7,19 +7,19 @@ not 6, the `callback` launches a new query*.
 
 ## :page_with_curl: *Instructions*
 
-**1)**: Compile your contract (launch this command **inside** the folder `wolfram-alpha`):
+**1)** Compile your contract (launch this command **inside** the folder `wolfram-alpha`):
 
 **`❍ eosio-cpp -abigen wolframrand.cpp -o wolframrand.wasm`**
 
-**2)**: Unlock your wallet:
+**2)** Unlock your wallet:
 
 **`❍ cleos wallet unlock -n <your-wallet-name> --password <your-wallet-password>`**
 
-**3)**: Deploy your contract on EOS (launch this command **outside** the folder `wolfram-alpha`):
+**3)** Deploy your contract on EOS (launch this command **outside** the folder `wolfram-alpha`):
 
 **`❍ cleos set contract <your-account-name> wolfram-alpha wolframrand.wasm -p <your-account-name>@<permission>`**
 
-**4)**: Call the `getrandomnum` action of the contract `wolframrand`:
+**4)** Call the `getrandomnum` action of the contract `wolframrand`:
 
 **`❍ cleos push action <your-account-name> getrandomnum '[]' -p <your-account-name>@<permission>`**
 

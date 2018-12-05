@@ -6,19 +6,19 @@ The `randomsample.cpp` example allows you to *retrieve a random number*.
 
 ## :page_with_curl: *Instructions*
 
-**1)**: Compile your contract (launch this command **inside** the folder `random-datasource`):
+**1)** Compile your contract (launch this command **inside** the folder `random-datasource`):
 
 **`❍ eosio-cpp -abigen randomsample.cpp -o randomsample.wasm`**
 
-**2)**: Unlock your wallet:
+**2)** Unlock your wallet:
 
 **`❍ cleos wallet unlock -n <your-wallet-name> --password <your-wallet-password>`**
 
-**3)**: Deploy your contract on EOS (launch this command **outside** the folder `random-datasource`):
+**3)** Deploy your contract on EOS (launch this command **outside** the folder `random-datasource`):
 
 **`❍ cleos set contract <your-account-name> random-datasource randomsample.wasm -p <your-account-name>@<permission>`**
 
-**4)**: Call the `getrandnum` action of the contract `randomsample`:
+**4)** Call the `getrandnum` action of the contract `randomsample`:
 
 **`❍ cleos push action <your-account-name> getrandnum '[]' -p <your-account-name>@<permission>`**
 

@@ -7,19 +7,19 @@ you with the authenticity proof of the fetched data***.
 
 ## :page_with_curl: *Instructions*
 
-**1)**: Compile your contract (launch this command **inside** the folder `eos-usd-price`):
+**1)** Compile your contract (launch this command **inside** the folder `eos-usd-price`):
 
 **`❍ eosio-cpp -abigen eosusdprice.cpp -o eosusdprice.wasm`**
 
-**2)**: Unlock your wallet:
+**2)** Unlock your wallet:
 
 **`❍ cleos wallet unlock -n <your-wallet-name> --password <your-wallet-password>`**
 
-**3)**: Deploy your contract on EOS (launch this command **outside** the folder `eos-usd-price`):
+**3)** Deploy your contract on EOS (launch this command **outside** the folder `eos-usd-price`):
 
 **`❍ cleos set contract <your-account-name> eos-usd-price eosusdprice.wasm -p <your-account-name>@<permission>`**
 
-**4)**: Call the `execquery` action of the contract `eosusdprice`:
+**4)** Call the `execquery` action of the contract `eosusdprice`:
 
 **`❍ cleos push action <your-account-name> execquery '[]' -p <your-account-name>@<permission>`**
 

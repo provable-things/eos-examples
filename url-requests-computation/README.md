@@ -6,35 +6,35 @@ The `urlrequests.cpp` example allows you *to retrieve the response of several UR
 
 ## :page_with_curl: *Instructions*
 
-**1)**: Compile your contract (launch this command **inside** the folder `url-requests-computation`):
+**1)** Compile your contract (launch this command **inside** the folder `url-requests-computation`):
 
 **`❍ eosio-cpp -abigen urlrequests.cpp -o urlrequests.wasm`**
 
-**2)**: Unlock your wallet:
+**2)** Unlock your wallet:
 
 **`❍ cleos wallet unlock -n <your-wallet-name> --password <your-wallet-password>`**
 
-**3)**: Deploy your contract on EOS (launch this command **outside** the folder `url-requests-computation`):
+**3)** Deploy your contract on EOS (launch this command **outside** the folder `url-requests-computation`):
 
 **`❍ cleos set contract <your-account-name> url-requests-computation urlrequests.wasm -p <your-account-name>@<permission>`**
 
-**4)**: Call the `reqheadscust` action of the contract `urlrequests`:
+**4)** Call the `reqheadscust` action of the contract `urlrequests`:
 
 **`❍ cleos push action <your-account-name> reqheadscust '[]' -p <your-account-name>@<permission>`**
 
-**5)**: Call the `reqbasauth` action of the contract `urlrequests`:
+**5)** Call the `reqbasauth` action of the contract `urlrequests`:
 
 **`❍ cleos push action <your-account-name> reqbasauth '[]' -p <your-account-name>@<permission>`**
 
-**6)**: Call the `reqpost` action of the contract `urlrequests`:
+**6)** Call the `reqpost` action of the contract `urlrequests`:
 
 **`❍ cleos push action <your-account-name> reqpost '[]' -p <your-account-name>@<permission>`**
 
-**7)**: Call the `reqput` action of the contract `urlrequests`:
+**7)** Call the `reqput` action of the contract `urlrequests`:
 
 **`❍ cleos push action <your-account-name> reqput '[]' -p <your-account-name>@<permission>`**
 
-**9)**: Call the `reqcookies` action of the contract `urlrequests`:
+**9)** Call the `reqcookies` action of the contract `urlrequests`:
 
 **`❍ cleos push action <your-account-name> reqcookies '[]' -p <your-account-name>@<permission>`**
 
