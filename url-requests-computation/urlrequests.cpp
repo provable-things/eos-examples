@@ -49,7 +49,7 @@ class urlrequests : public eosio::contract
         request("QmdKK319Veha83h6AYgQqhx9YRsJ9MJE7y33oCXyZ4MqHE",
                 "POST",
                 "https://api.postcodes.io/postcodes",
-                "{'json': {'postcodes' : ['OX49 5NU']}}"
+                "{\"json\": {\"postcodes\" : [\"OX49 5NU\"]}}"
                );   
     }
  
