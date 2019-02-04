@@ -1,3 +1,5 @@
+#define ORACLIZE_NETWORK_NAME "eosio_testnet_jungle"
+
 #include "oraclize/eos_api.hpp"
 
 using namespace eosio;
