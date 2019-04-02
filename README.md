@@ -17,11 +17,13 @@ This provisions your contract with the __`oraclize_query()`__ function (and many
 
 This is a list of the features you will find amongst the examples, along with a reference to the relevant example:
 
-* Sending simple __URL Queries!__ [#1](./eos-usd-price/eosusdprice.cpp) [#2](./check-queryid/checkqueryid.cpp)
+* Sending simple __URL Queries!__ [#1](./eos-usd-price/eosusdprice.cpp) [#2](./check-queryid/checkqueryid.cpp) [#3](./diesel-price/dieselprice.cpp)
+* Scheduling a query for a __future date!__ [#1](./wolfram-alpha/wolframrand.cpp) [#2](./diesel-price/dieselprice.cpp)
 * Sending calls __recursively__! [#1](./wolfram-alpha/wolframrand.cpp)
 * Requesting __Android__ authenticity __proofs!__ [#1](./eos-usd-price/eosusdprice.cpp)
 * Requesting __IPFS storage__ for the authenticity proofs! [#1](./eos-usd-price/eosusdprice.cpp)
 * Leveraging __JSONPATH__ parsing helpers! [#1](./eos-usd-price/eosusdprice.cpp)
+* Leveraging __XPATH__ parsing helpers! [#1](./diesel-price/dieselprice.cpp)
 * Using the __random datasouce__! [#1](./random-datasource/randomsample.cpp)
 * Using the __computation datasouce__! [#1](./bitcoin-computation/bitcoincomp.cpp) [#2](./url-requests-computation/urlrequests.cpp)
 * Using the __WolframAlpha__ datasource! [#1](./wolfram-alpha/wolframrand.cpp)
