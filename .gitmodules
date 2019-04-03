@@ -16,3 +16,6 @@
 [submodule "random-datasource/oraclize"]
 	path = random-datasource/oraclize
 	url = https://github.com/oraclize/eos-api
+[submodule "diesel-price/oraclize"]
+	path = diesel-price/oraclize
+	url = git@github.com:oraclize/eos-api.git
