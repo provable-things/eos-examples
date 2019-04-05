@@ -1,4 +1,4 @@
-# Oraclize's Random Datasource Example 
+# Oraclize's Random Datasource Example
 
 This repo is to demonstrate how you would work with the Oraclize **random** datasource.
 
@@ -29,7 +29,7 @@ You can search your transaction ID in one of the following links to verify it:
 
 * :mag_right::ledger: [Blocks.io](https://jungle.bloks.io/): A block explorer for the Jungle 2.0 testnet.
 
-* :palm_tree::lion::palm_tree: [Jungle 2.0](https://monitor.jungletestnet.io/#home): A transaction explorer is available by selecting *Get TX* on the Jungle 2.0 testnet website.i
+* :palm_tree::lion::palm_tree: [Jungle 2.0](https://monitor.jungletestnet.io/#home): A transaction explorer is available by selecting *Get TX* on the Jungle 2.0 testnet website.
 
 ## :ambulance: Support
 
