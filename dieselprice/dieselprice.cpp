@@ -1,14 +1,11 @@
 #include "oraclize/eos_api.hpp"
 
-using namespace eosio;
-
-
-class dieselprice : public eosio::contract 
+class dieselprice : public eosio::contract
 {
   public:
       using contract::contract;
 
-      dieselprice(name receiver, name code, datastream<const char*> ds) : contract(receiver, code, ds) {}
+      dieselprice(eosio::name receiver, eosio::name code, datastream<const char*> ds) : contract(receiver, code, ds) {}
 
       [[eosio::action]]
       void execquery()
@@ -18,10 +15,13 @@ class dieselprice : public eosio::contract
       }
 
       [[eosio::action]]
-      void callback(checksum256 queryId, std::vector<uint8_t> result, std::vector<uint8_t> proof)
+      void callback(
+          const eosio::checksum256 queryId,
+          const std::vector<uint8_t> result,
+          const std::vector<uint8_t> proof
+      )
       {
-          require_auth(oraclize_cbAddress());
-
+          require_auth(provable_cbAddress());
           const std::string result_str = vector_to_string(result);
           print("Diesel Price USD: ", result_str);
       }

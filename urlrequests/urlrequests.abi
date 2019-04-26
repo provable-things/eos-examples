@@ -1,0 +1,85 @@
+{
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT ",
+    "version": "eosio::abi/1.1",
+    "types": [],
+    "structs": [
+        {
+            "name": "callback",
+            "base": "",
+            "fields": [
+                {
+                    "name": "queryId",
+                    "type": "string"
+                },
+                {
+                    "name": "result",
+                    "type": "uint8[]"
+                },
+                {
+                    "name": "proof",
+                    "type": "uint8[]"
+                }
+            ]
+        },
+        {
+            "name": "reqbasauth",
+            "base": "",
+            "fields": []
+        },
+        {
+            "name": "reqcookies",
+            "base": "",
+            "fields": []
+        },
+        {
+            "name": "reqheadscust",
+            "base": "",
+            "fields": []
+        },
+        {
+            "name": "reqpost",
+            "base": "",
+            "fields": []
+        },
+        {
+            "name": "reqput",
+            "base": "",
+            "fields": []
+        }
+    ],
+    "actions": [
+        {
+            "name": "callback",
+            "type": "callback",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "reqbasauth",
+            "type": "reqbasauth",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "reqcookies",
+            "type": "reqcookies",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "reqheadscust",
+            "type": "reqheadscust",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "reqpost",
+            "type": "reqpost",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "reqput",
+            "type": "reqput",
+            "ricardian_contract": ""
+        }
+    ],
+    "tables": [],
+    "ricardian_clauses": [],
+    "variants": []
+}

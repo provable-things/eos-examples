@@ -1,26 +1,29 @@
 #include "oraclize/eos_api.hpp"
 
-using namespace eosio;
-
-
 class urlrequests : public eosio::contract
 {
   private:
-    void request(const std::string _query, const std::string _method, const std::string _url, const std::string _kwargs) 
-    { 
-        std::vector<std::vector<unsigned char>> myquery = {
+    void request(
+        const std::string _query,
+        const std::string _method,
+        const std::string _url,
+        const std::string _kwargs
+    )
+    {
+        std::vector<std::vector<unsigned char>> args = {
             string_to_vector(_query),
             string_to_vector(_method),
             string_to_vector(_url),
             string_to_vector(_kwargs)
         };
+        std::vector<unsigned char> myquery = provable_set_computation_args(args);
         oraclize_query("computation", myquery);
     }
- 
+
   public:
     using contract::contract;
 
-    urlrequests(name receiver, name code, datastream<const char*> ds) : contract(receiver, code, ds) {}
+    urlrequests(eosio::name receiver, eosio::name code, datastream<const char*> ds) : contract(receiver, code, ds) {}
 
     [[eosio::action]]
     void reqheadscust()
@@ -42,7 +45,7 @@ class urlrequests : public eosio::contract
                 "{'auth': ('myuser','secretpass'), 'headers': {'content-type': 'json'}}"
                );
     }
- 
+
     [[eosio::action]]
     void reqpost()
     {
@@ -50,9 +53,9 @@ class urlrequests : public eosio::contract
                 "POST",
                 "https://api.postcodes.io/postcodes",
                 "{\"json\": {\"postcodes\" : [\"OX49 5NU\"]}}"
-               );   
+               );
     }
- 
+
     [[eosio::action]]
     void reqput()
     {
@@ -62,7 +65,7 @@ class urlrequests : public eosio::contract
                 "{'json' : {'testing':'it works'}}"
                );
     }
- 
+
     [[eosio::action]]
     void reqcookies()
     {
@@ -72,12 +75,15 @@ class urlrequests : public eosio::contract
                 "{'cookies' : {'thiscookie':'should be saved and visible :)'}}"
                );
     }
-    
+
     [[eosio::action]]
-    void callback(capi_checksum256 queryId, std::vector<unsigned char> result, std::vector<unsigned char> proof)
+    void callback(
+        const std::string queryId,
+        const std::vector<unsigned char> result,
+        const std::vector<unsigned char> proof
+    )
     {
-        require_auth(oraclize_cbAddress());
- 
+        require_auth(provable_cbAddress());
         const std::string result_str = vector_to_string(result);
         print("Response: ", result_str);
     }
