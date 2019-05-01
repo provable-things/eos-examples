@@ -1,0 +1,29 @@
+{
+  "name": "eos-examples",
+  "version": "1.4.0",
+  "description": "Provable eos examples compatible with the eosio CDT 1.4.0",
+  "main": "",
+  "scripts": {
+    "release": "standard-version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oraclize/eos-examples.git"
+  },
+  "keywords": [
+    "provable",
+    "oraclize",
+    "eos",
+    "examples",
+    "cdt-1.4.0"
+  ],
+  "author": "riccardopersiani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oraclize/eos-examples/issues"
+  },
+  "homepage": "https://github.com/oraclize/eos-examples#readme",
+  "dependencies": {
+    "standard-version": "^5.0.2"
+  }
+}
