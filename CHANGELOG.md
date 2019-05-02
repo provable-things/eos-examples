@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.1](https://github.com/oraclize/eos-examples/compare/v1.4.0...v1.6.1) (2019-05-02)
+
+
+### Features
+
+* update eos-examples compatible with CDT 1.6.1 ([da97a87](https://github.com/oraclize/eos-examples/commit/da97a87))
+
+
+
 # 1.4.0 (2019-05-01)
 
 

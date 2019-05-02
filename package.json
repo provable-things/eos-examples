@@ -1,6 +1,6 @@
 {
   "name": "eos-examples",
-  "version": "1.4.0",
+  "version": "1.6.1",
   "description": "Provable eos examples compatible with the eosio CDT 1.4.0",
   "main": "",
   "scripts": {
