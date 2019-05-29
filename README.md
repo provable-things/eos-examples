@@ -6,7 +6,7 @@ Attention! Please clone this repo with the following command:
     git clone --recursive https://github.com/oraclize/eos-examples.git
 ```
 
-Here you can find some code examples showing just how __easy__ it is to integrate the __Oraclize__ Service into your EOS smart-contracts! Thanks to our CDT 1.6.1 [__EOS API__](https://github.com/oraclize/eos-api/tree/eosio.cdt-1.6.1) using __Oraclize__ in your projects couldn't be more straightforward.
+Here you can find some code examples showing just how __easy__ it is to integrate the __Oraclize__ Service into your EOS smart-contracts! Thanks to our CDT 1.6.1 [__EOS API__](https://github.com/oraclize/eos-api) using __Oraclize__ in your projects couldn't be more straightforward.
 In C++ it is as simple as importing __`oraclize/eos_api.hpp`__ in your contract like so:
 
 ```
