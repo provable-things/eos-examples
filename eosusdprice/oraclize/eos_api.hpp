@@ -41,7 +41,7 @@
  *                   Definitions                  *
  **************************************************/
 #ifndef ORACLIZE_NETWORK_NAME
-    #warning ORACLIZE_NETWORK_NAME is not set, setting it to "eosio_unknown".. [possible values are "eosio_mainnet"/"eosio_testnet_jungle"/"eosio_unknown"]
+    #warning ORACLIZE_NETWORK_NAME is not set, setting it to "eosio_unknown".. [possible values are "eosio_mainnet"/"eosio_testnet_jungle"/"eosio_testnet_kylin"/"eosio_unknown"]
     #define ORACLIZE_NETWORK_NAME "eosio_unknown"
 #endif // ORACLIZE_NETWORK_NAME
 
