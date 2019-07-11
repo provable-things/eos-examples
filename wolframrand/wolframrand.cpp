@@ -1,4 +1,4 @@
-#include "oraclize/eos_api.hpp"
+#include "provable/eos_api.hpp"
 
 class wolframrand : public eosio::contract
 {
@@ -11,7 +11,7 @@ class wolframrand : public eosio::contract
     void getrandomnum()
     {
         oraclize_query(10, "WolframAlpha", "random number between 1 and 6");
-        print(" Oraclize query was sent, standing by for the answer...");
+        print(" Provable query was sent, standing by for the answer...");
     }
 
     [[eosio::action]]
