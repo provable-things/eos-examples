@@ -1,6 +1,6 @@
 #define CONTRACT_NAME "checkqueryid"
 
-#include "oraclize/eos_api.hpp"
+#include "provable/eos_api.hpp"
 
 class checkqueryid : public eosio::contract
 {
@@ -14,7 +14,7 @@ class checkqueryid : public eosio::contract
     {
         eosio::checksum256 myQueryId = oraclize_query("URL", "json(https://api.kraken.com/0/public/Ticker?pair=EOSUSD).result.EOSUSD.l.0");
         oraclize_queryId_localEmplace(myQueryId);
-        print(" Oraclize query was sent & queryId saved in a tbl record, standing by for the answer...");
+        print(" Provable query was sent & queryId saved in a tbl record, standing by for the answer...");
     }
 
     [[eosio::action]]
