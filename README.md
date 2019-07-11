@@ -3,7 +3,7 @@
 Here you can find some code examples showing just how __easy__ it is to integrate the __Provable__ Service into your EOS smart-contracts! Thanks to our CDT 1.6.1 [__EOS API__](https://github.com/provable-things/eos-api) using __Provable__ in your projects couldn't be more straightforward.
 In C++ it is as simple as importing __`provable/eos_api.hpp`__ in your contract like so:
 
-```
+```c++
     #include "provable/eos_api.hpp"
 ```
 
