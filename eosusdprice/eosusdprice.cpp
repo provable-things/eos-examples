@@ -17,7 +17,7 @@ class eosusdprice : public eosio::contract
 
       [[eosio::action]]
       void callback(
-          const std::string queryId,
+          const eosio::checksum256 queryId,
           const std::vector<uint8_t> result,
           const std::vector<uint8_t> proof
       )
