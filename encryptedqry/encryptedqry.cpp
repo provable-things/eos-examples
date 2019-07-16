@@ -5,7 +5,7 @@ class encryptedqry : public eosio::contract
   public:
       using contract::contract;
 
-      eosusdprice(eosio::name receiver, eosio::name code, datastream<const char*> ds) : contract(receiver, code, ds) {}
+      encryptedqry(eosio::name receiver, eosio::name code, datastream<const char*> ds) : contract(receiver, code, ds) {}
 
       [[eosio::action]]
       void execquery()
@@ -13,8 +13,7 @@ class encryptedqry : public eosio::contract
           print("Sending encrypted query to Provable...");
           oraclize_query(
             "URL",
-            "BMqMhIFTTzsDbUSfPT233dVWB6wp0ksci7R/c6Jezcy3nEsnX7EQTaqRbej3shF7NlOwGRJAs1IBtYS32f6HrexffY+z1XMCHp+W6vFaIpDSVP0sVxiokuO0fr+ePxHOkvUh9x49BSmageBbHM1RB6QY/xhhvwJtssZOspEHvic=",
-            "BDfT0gaCqtru/YRL/qEDEPTopcKe04wXtkRlDw0PNa8hazsDgKXv1G0pBVaHK5um6eTzAggrLKlXVLSUqI6rVzd9oaDST4Zo1NtLf2iMwWI0yx7sWwuhFY0Ot+OltgHLf8SclyRuHZHiOq+Ubx1pBtFGImYH4yMon1PgR+V9iWqN2gzv",\
+            "BFGZ3gbbKxeypLaf/8L/q6m1jgRG1s5P8OkRofvcjlvIlF6qtesDRtwxomTpfCsJSPfk8z/rw7rYzz8kZOzeh+bFOJyzsojnFektOk8aJuGvFWijFtZvtYAfnFmBDce/f+dcTLsnrmWW4DQIQ2+2LKrOHKliYImtjQlHsPXpQG3giaY5cRkDBCEXdDmJiWMQ8lRFatZYjXa95Q==",\
             (proofType_Android | proofStorage_IPFS)
           );
       }
@@ -28,7 +27,7 @@ class encryptedqry : public eosio::contract
       {
           require_auth(provable_cbAddress());
           const std::string result_str = vector_to_string(result);
-          print(" Status: ", result_str);
+          print(" EOSUSD Price: ", result_str);
           print(" Proof length: ", proof.size());
       }
 };
