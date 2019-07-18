@@ -1,7 +1,7 @@
 #define ORACLIZE_NETWORK_NAME "eosio_testnet_jungle"
 #define CONTRACT_NAME "randomsample"
 
-#include "oraclize/eos_api.hpp"
+#include "provable/eos_api.hpp"
 
 class randomsample : public eosio::contract
 {
@@ -13,7 +13,7 @@ class randomsample : public eosio::contract
     [[eosio::action]]
     void getrandnum()
     {
-        print("Sending query to Oraclize...");
+        print("Sending query to Provable...");
         uint8_t N = 1; // Possible outputs: [0-255]
         uint32_t delay = 10;
         oraclize_newRandomDSQuery(delay, N);

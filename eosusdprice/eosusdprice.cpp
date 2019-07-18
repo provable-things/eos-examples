@@ -1,4 +1,4 @@
-#include "oraclize/eos_api.hpp"
+#include "provable/eos_api.hpp"
 
 class eosusdprice : public eosio::contract
 {
@@ -10,7 +10,7 @@ class eosusdprice : public eosio::contract
       [[eosio::action]]
       void execquery()
       {
-          print("Sending query to Oraclize...");
+          print("Sending query to Provable...");
           oraclize_query("URL", "json(https://min-api.cryptocompare.com/data/price?fsym=EOS&tsyms=USD).USD",\
            (proofType_Android | proofStorage_IPFS));
       }

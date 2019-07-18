@@ -1,4 +1,4 @@
-#include "oraclize/eos_api.hpp"
+#include "provable/eos_api.hpp"
 
 class urlrequests : public eosio::contract
 {
@@ -28,7 +28,7 @@ class urlrequests : public eosio::contract
     [[eosio::action]]
     void reqheadscust()
     {
-        print("Sending query to Oraclize...");
+        print("Sending query to Provable...");
         request("json(QmdKK319Veha83h6AYgQqhx9YRsJ9MJE7y33oCXyZ4MqHE).headers",
                 "GET",
                 "http://httpbin.org/headers",

@@ -1,4 +1,4 @@
-#include "oraclize/eos_api.hpp"
+#include "provable/eos_api.hpp"
 
 class bitcoincomp : public eosio::contract
 {
@@ -18,7 +18,7 @@ class bitcoincomp : public eosio::contract
         };
         std::vector<unsigned char> query = provable_set_computation_args(args);
         // Send Provable query
-        print("Sending query to Oraclize...");
+        print("Sending query to Provable...");
         oraclize_query("computation", query);
     }
 

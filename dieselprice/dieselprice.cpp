@@ -1,4 +1,4 @@
-#include "oraclize/eos_api.hpp"
+#include "provable/eos_api.hpp"
 
 class dieselprice : public eosio::contract
 {
@@ -10,7 +10,7 @@ class dieselprice : public eosio::contract
       [[eosio::action]]
       void execquery()
       {
-          print("Sending query to Oraclize...");
+          print("Sending query to Provable...");
           oraclize_query(60, "URL", "xml(https://www.fueleconomy.gov/ws/rest/fuelprices).fuelPrices.diesel");
       }
 
