@@ -362,9 +362,8 @@ eosio::checksum256 __oraclize_getNextQueryId(const name sender)
 }
 
 // Check that the queryId being passed matches with the one in the customer local table, return true/false accordingly
-bool __oraclize_queryId_match(const std::string _queryId, const name sender)
+bool __oraclize_queryId_match(const eosio::checksum256 queryId, const name sender)
 {
-    const eosio::checksum256 queryId = hexstring_to_checksum256(_queryId);
     name myQueryId_short;
     std::memcpy(&myQueryId_short, &queryId, sizeof(myQueryId_short));
     // Access the local query table and find the right row
@@ -613,7 +612,7 @@ bool __oraclize_randomDS_verifySig(const eosio::checksum256 digest, const uint8_
     return test_v27 || test_v28;
 }
 
-uint8_t oraclize_randomDS_proofVerify(const std::string _queryId, const std::vector<uint8_t> result, const std::vector<uint8_t> proof, const name payer)
+uint8_t oraclize_randomDS_proofVerify(const eosio::checksum256 queryId, const std::vector<uint8_t> result, const std::vector<uint8_t> proof, const name payer)
 {
     /*******************************************************************************************
      *                                                                                         *
@@ -639,7 +638,6 @@ uint8_t oraclize_randomDS_proofVerify(const std::string _queryId, const std::vec
     std::string context_name_str = ORACLIZE_NETWORK_NAME;
     char context_name[context_name_str.size()];
     context_name_str.copy(context_name, context_name_str.size());
-    const eosio::checksum256 queryId = hexstring_to_checksum256(_queryId);
     uint8_t tbh2[sizeof(context_name) + 32];
     std::memcpy(tbh2, &context_name, sizeof(context_name));
     std::memcpy(tbh2 + sizeof(context_name), &queryId.get_array()[0], 16);
