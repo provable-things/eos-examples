@@ -16,9 +16,9 @@ class wolframrand : public eosio::contract
 
     [[eosio::action]]
     void callback(
-        eosio::checksum256 queryId,
-        std::vector<uint8_t> result,
-        std::vector<uint8_t> proof
+        const eosio::checksum256 queryId,
+        const std::vector<uint8_t> result,
+        const std::vector<uint8_t> proof
     )
     {
         require_auth(provable_cbAddress());
