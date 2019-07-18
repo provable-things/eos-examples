@@ -78,7 +78,7 @@ class urlrequests : public eosio::contract
 
     [[eosio::action]]
     void callback(
-        const std::string queryId,
+        const eosio::checksum256 queryId,
         const std::vector<unsigned char> result,
         const std::vector<unsigned char> proof
     )

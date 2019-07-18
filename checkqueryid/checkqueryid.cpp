@@ -19,7 +19,7 @@ class checkqueryid : public eosio::contract
 
     [[eosio::action]]
     void callback(
-        std::string queryId,
+        eosio::checksum256 queryId,
         std::vector<unsigned char> result,
         std::vector<unsigned char> proof
     )
