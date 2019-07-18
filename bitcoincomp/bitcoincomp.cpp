@@ -17,7 +17,6 @@ class bitcoincomp : public eosio::contract
              string_to_vector(bitcoinAddress)
         };
         std::vector<unsigned char> query = provable_set_computation_args(args);
-        // Send Provable query
         print("Sending query to Provable...");
         oraclize_query("computation", query);
     }
@@ -29,7 +28,6 @@ class bitcoincomp : public eosio::contract
         const std::vector<unsigned char> proof
     )
     {
-         // Check that Provable is the callback action caller
          require_auth(provable_cbAddress());
          // Print the account balance of the Bitcoin account
          const std::string result_str = vector_to_string(result);

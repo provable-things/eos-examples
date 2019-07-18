@@ -14,25 +14,24 @@ class checkqueryid : public eosio::contract
     {
         eosio::checksum256 myQueryId = oraclize_query("URL", "json(https://api.kraken.com/0/public/Ticker?pair=EOSUSD).result.EOSUSD.l.0");
         oraclize_queryId_localEmplace(myQueryId);
-        print(" Provable query was sent & queryId saved in a tbl record, standing by for the answer...");
+        print(" Provable query was sent & queryId saved in the queryId table as a record, standing by for the answer...");
     }
 
     [[eosio::action]]
     void callback(
-        eosio::checksum256 queryId,
-        std::vector<unsigned char> result,
-        std::vector<unsigned char> proof
+        const eosio::checksum256 queryId,
+        const std::vector<unsigned char> result,
+        const std::vector<unsigned char> proof
     )
     {
         require_auth(provable_cbAddress());
         if (!oraclize_queryId_match(queryId))
         {
             // The query Id match has failed, manage this use case...
-            print(" UNEXPECTED Query ID!");
+            print(" Unexpected query ID!");
         }
         else
         {
-            print(" Query ID: ", queryId);
             const std::string result_str = vector_to_string(result);
             print(" Result: ", result_str);
         }
