@@ -23,7 +23,7 @@ __`❍ git clone https://github.com/provable-things/encrypted-queries.git`__
 
 **3)** Enter the directory and brace yourself to encrypt your query with the Provable public key:
 
-__`❍ cd encrypted-queries`__
+__`❍ cd encrypted-queries/tools`__
 
 Provable public key:
 
