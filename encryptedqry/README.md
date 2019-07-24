@@ -21,9 +21,9 @@ oraclize_query(
 
 __`❍ git clone https://github.com/provable-things/encrypted-queries.git`__
 
-**3)** Enter the directory and brace yourself to encrypt your query with the Provable public key:
+**3)** Enter the directory and brace yourself to encrypt your query with the Provable public key & install python modules:
 
-__`❍ cd encrypted-queries/tools`__
+__`❍ cd encrypted-queries/tools && pip install base58`__
 
 Provable public key:
 
