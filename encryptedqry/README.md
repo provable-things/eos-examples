@@ -13,7 +13,8 @@ The `encryptedqry.cpp` example allows you to *send an encrypted query*.
 ```
 oraclize_query(
   "URL",
-  "json(https://min-api.cryptocompare.com/data/price?fsym=EOS&tsyms=USD).USD",
+  "json(https://min-api.cryptocompare.com/data/price?fsym=EOS&tsyms=USD&sign=true).USD",\
+  (proofType_Native)
 )
 ```
 
@@ -33,12 +34,12 @@ Provable public key:
 
 **4)** Encrypt the first query argument:
 
-__`❍  python encrypted_queries_tools.py -e -p 044992e9473b7d90ca54d2886c7addd14a61109af202f1c95e218b0c99eb060c7134c4ae46345d0383ac996185762f04997d6fd6c393c86e4325c469741e64eca9 "json(https://min-api.cryptocompare.com/data/price?fsym=EOS&tsyms=USD).USD"`__
+__`❍  python encrypted_queries_tools.py -e -p 044992e9473b7d90ca54d2886c7addd14a61109af202f1c95e218b0c99eb060c7134c4ae46345d0383ac996185762f04997d6fd6c393c86e4325c469741e64eca9 "json(https://min-api.cryptocompare.com/data/price?fsym=EOS&tsyms=USD&sign=true).USD"`__
 
 it will generate a unique encrypted string (each re-run will generate a new unique string, as each encrypted string is meant to be used only by a single contract at a time):
 
 ```
-BFGZ3gbbKxeypLaf/8L/q6m1jgRG1s5P8OkRofvcjlvIlF6qtesDRtwxomTpfCsJSPfk8z/rw7rYzz8kZOzeh+bFOJyzsojnFektOk8aJuGvFWijFtZvtYAfnFmBDce/f+dcTLsnrmWW4DQIQ2+2LKrOHKliYImtjQlHsPXpQG3giaY5cRkDBCEXdDmJiWMQ8lRFatZYjXa95Q==
+BI1E+MtXQJXDFHVm38/YRZHMVe3s99a0rmQbdtUaa3w+EL/JALVJrvAKVIJi8OxON8vTo5K8x9P78qwQXovsDazeyV8tybIbcO6GlEy/tQXvtHClCPFjQREZ7uZfVd+0wWB1dqQO/WxCunCfgj8uiGFNQrlwwmyqc6/A/9lUUfoTf/koCI44sIOvsybELCg0m1ICaGKx1GhC8qJkChQwkACbY6Y=
 ```
 
 **5)** Use the previous non-deterministic output and plug it into the query function:
@@ -46,7 +47,8 @@ BFGZ3gbbKxeypLaf/8L/q6m1jgRG1s5P8OkRofvcjlvIlF6qtesDRtwxomTpfCsJSPfk8z/rw7rYzz8k
 ```
 oraclize_query(
   "URL",
-  "BFGZ3gbbKxeypLaf/8L/q6m1jgRG1s5P8OkRofvcjlvIlF6qtesDRtwxomTpfCsJSPfk8z/rw7rYzz8kZOzeh+bFOJyzsojnFektOk8aJuGvFWijFtZvtYAfnFmBDce/f+dcTLsnrmWW4DQIQ2+2LKrOHKliYImtjQlHsPXpQG3giaY5cRkDBCEXdDmJiWMQ8lRFatZYjXa95Q==",
+  "BI1E+MtXQJXDFHVm38/YRZHMVe3s99a0rmQbdtUaa3w+EL/JALVJrvAKVIJi8OxON8vTo5K8x9P78qwQXovsDazeyV8tybIbcO6GlEy/tQXvtHClCPFjQREZ7uZfVd+0wWB1dqQO/WxCunCfgj8uiGFNQrlwwmyqc6/A/9lUUfoTf/koCI44sIOvsybELCg0m1ICaGKx1GhC8qJkChQwkACbY6Y=",\
+  (proofType_Native)
 );
 ```
 
