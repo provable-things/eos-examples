@@ -13,8 +13,8 @@ class encryptedqry : public eosio::contract
           print("Sending encrypted query to Provable...");
           oraclize_query(
             "URL",
-            "BFGZ3gbbKxeypLaf/8L/q6m1jgRG1s5P8OkRofvcjlvIlF6qtesDRtwxomTpfCsJSPfk8z/rw7rYzz8kZOzeh+bFOJyzsojnFektOk8aJuGvFWijFtZvtYAfnFmBDce/f+dcTLsnrmWW4DQIQ2+2LKrOHKliYImtjQlHsPXpQG3giaY5cRkDBCEXdDmJiWMQ8lRFatZYjXa95Q==",\
-            (proofType_Android | proofStorage_IPFS)
+            "BI1E+MtXQJXDFHVm38/YRZHMVe3s99a0rmQbdtUaa3w+EL/JALVJrvAKVIJi8OxON8vTo5K8x9P78qwQXovsDazeyV8tybIbcO6GlEy/tQXvtHClCPFjQREZ7uZfVd+0wWB1dqQO/WxCunCfgj8uiGFNQrlwwmyqc6/A/9lUUfoTf/koCI44sIOvsybELCg0m1ICaGKx1GhC8qJkChQwkACbY6Y=",\
+            (proofType_Native)
           );
       }
 
