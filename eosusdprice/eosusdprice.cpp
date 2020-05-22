@@ -11,7 +11,7 @@ class eosusdprice : public eosio::contract
       void execquery()
       {
           print("Sending query to Provable...");
-          oraclize_query("URL", "json(https://min-api.cryptocompare.com/data/price?fsym=EOS&tsyms=USD).USD",\
+          provable_query("URL", "json(https://min-api.cryptocompare.com/data/price?fsym=EOS&tsyms=USD).USD",\
            (proofType_Android | proofStorage_IPFS));
       }
 
@@ -28,5 +28,3 @@ class eosusdprice : public eosio::contract
           print(" Proof length: ", proof.size());
       }
 };
-
-EOSIO_DISPATCH(eosusdprice, (execquery)(callback))

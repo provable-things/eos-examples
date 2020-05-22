@@ -1,0 +1,6 @@
+*.sw*
+*.abi
+*.wasm
+*.wast
+*.sh
+*.pwd

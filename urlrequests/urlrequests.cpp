@@ -17,7 +17,7 @@ class urlrequests : public eosio::contract
             string_to_vector(_kwargs)
         };
         std::vector<unsigned char> myquery = provable_set_computation_args(args);
-        oraclize_query("computation", myquery);
+        provable_query("computation", myquery);
     }
 
   public:
@@ -88,5 +88,3 @@ class urlrequests : public eosio::contract
         print("Response: ", result_str);
     }
 };
-
-EOSIO_DISPATCH(urlrequests, (reqheadscust)(reqbasauth)(reqpost)(reqput)(reqcookies)(callback))

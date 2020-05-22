@@ -11,7 +11,7 @@ class dieselprice : public eosio::contract
       void execquery()
       {
           print("Sending query to Provable...");
-          oraclize_query(60, "URL", "xml(https://www.fueleconomy.gov/ws/rest/fuelprices).fuelPrices.diesel");
+          provable_query(60, "URL", "xml(https://www.fueleconomy.gov/ws/rest/fuelprices).fuelPrices.diesel");
       }
 
       [[eosio::action]]
@@ -26,5 +26,3 @@ class dieselprice : public eosio::contract
           print("Diesel Price USD: ", result_str);
       }
 };
-
-EOSIO_DISPATCH(dieselprice, (execquery)(callback))
