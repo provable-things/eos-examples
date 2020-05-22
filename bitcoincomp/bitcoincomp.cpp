@@ -34,5 +34,3 @@ class bitcoincomp : public eosio::contract
          print("Account balance:", result_str);
     }
 };
-
-//EOSIO_DISPATCH(bitcoincomp, (compute)(callback))
