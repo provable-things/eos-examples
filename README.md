@@ -7,11 +7,27 @@ In C++ it is as simple as importing __`provable/eos_api.hpp`__ in your contract 
     #include "provable/eos_api.hpp"
 ```
 
-This provisions your contract with the __`oraclize_query()`__ function (and many others!), which makes it trivial to leverage our technology straight away.
+This provisions your contract with the __`provable_query()`__ function (and many others!), which makes it trivial to leverage our technology straight away.
 
 :computer: Happy developing!
 
 ***
+
+### :globe_with_meridians: __Network Availability__
+
+The oracle service is currently available on:
+
+* EOS Mainnet
+* EOS Jungle 3 Testnet
+* EOS Kylin Testnet
+
+### :globe_with_meridians: __CDT Availability__
+
+The `master` branch is currently referring to EOSIO.CDT 1.7, please check the releases for the specific CDT version:
+
+* CDT 1.7
+* CDT 1.6
+* CDT 1.4
 
 ### :black_nib: __Notes__
 
@@ -27,6 +43,7 @@ This is a list of the features you will find amongst the examples, along with a 
 * Using the __random datasouce__! [#1](./randomsample/randomsample.cpp)
 * Using the __computation datasouce__! [#1](./bitcoincomp/bitcoincomp.cpp) [#2](./urlrequests/urlrequests.cpp)
 * Using the __WolframAlpha__ datasource! [#1](./wolframrand/wolframrand.cpp)
+* Using the __encrypted__ query! [#1](./encryptedqry/encryptedqry.cpp)
 
 ### :loudspeaker: __Support__
 
