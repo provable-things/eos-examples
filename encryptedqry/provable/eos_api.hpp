@@ -1,8 +1,8 @@
 /*********************************************************************************
- * Oraclize API                                                                  *
+ * Provable API                                                                  *
  *                                                                               *
- * Copyright (c) 2015-2016 Oraclize SRL                                          *
- * Copyright (c) 2016 Oraclize LTD                                               *
+ * Copyright (c) 2015-2016 Provable SRL                                          *
+ * Copyright (c) 2016 Provable LTD                                               *
  * Permission is hereby granted, free of charge, to any person obtaining a copy  *
  * of this software and associated documentation files (the "Software"), to deal *
  * in the Software without restriction, including without limitation the rights  *
@@ -20,8 +20,8 @@
  * THE SOFTWARE.                                                                 *
  *********************************************************************************/
 
-#ifndef ORACLIZEAPI_H
-    #define ORACLIZEAPI_H
+#ifndef PROVABLEAPI_H
+    #define PROVABLEAPI_H
 
 
 /**************************************************
@@ -40,24 +40,24 @@
  *                      MACRO                     *
  *                   Definitions                  *
  **************************************************/
-#ifndef ORACLIZE_NETWORK_NAME
-    #warning ORACLIZE_NETWORK_NAME is not set, setting it to "eosio_unknown".. [possible values are "eosio_mainnet"/"eosio_testnet_jungle"/"eosio_unknown"]
-    #define ORACLIZE_NETWORK_NAME "eosio_unknown"
-#endif // ORACLIZE_NETWORK_NAME
+#ifndef PROVABLE_NETWORK_NAME
+    #warning PROVABLE_NETWORK_NAME is not set, setting it to "eosio_unknown".. [possible values are "eosio_mainnet"/"eosio_testnet_jungle"/"eosio_testnet_kylin"/"eosio_unknown"]
+    #define PROVABLE_NETWORK_NAME "eosio_unknown"
+#endif // PROVABLE_NETWORK_NAME
 
 #ifndef CONTRACT_NAME
     #warning CONTRACT_NAME is not set, setting it to "".. [write the "contract.name" not the account name]
     #define CONTRACT_NAME "unknown"
 #endif // CONTRACT_NAME
 
-#ifndef ORACLIZE_PAYER
-   #define ORACLIZE_PAYER _self
-#endif // ORACLIZE_PAYER
+#ifndef PROVABLE_PAYER
+   #define PROVABLE_PAYER _self
+#endif // PROVABLE_PAYER
 
-#define oraclize_query(...) __oraclize_query(ORACLIZE_PAYER, __VA_ARGS__, _self)
-#define oraclize_newRandomDSQuery(...) __oraclize_newRandomDSQuery(ORACLIZE_PAYER, __VA_ARGS__, _self)
-#define oraclize_queryId_localEmplace(...) __oraclize_queryId_localEmplace(__VA_ARGS__, _self)
-#define oraclize_queryId_match(...) __oraclize_queryId_match(__VA_ARGS__, _self)
+#define provable_query(...) __provable_query(PROVABLE_PAYER, __VA_ARGS__, _self)
+#define provable_newRandomDSQuery(...) __provable_newRandomDSQuery(PROVABLE_PAYER, __VA_ARGS__, _self)
+#define provable_queryId_localEmplace(...) __provable_queryId_localEmplace(__VA_ARGS__, _self)
+#define provable_queryId_match(...) __provable_queryId_match(__VA_ARGS__, _self)
 
 
 /**************************************************
@@ -88,7 +88,7 @@ const uint8_t LEDGERKEY[64] = {
 
 
 /**************************************************
- *                ORACLIZE  TABLE                 *
+ *                PROVABLE  TABLE                 *
  *                   Definition                   *
  **************************************************/
 struct [[eosio::table, eosio::contract("provableconn")]] snonce
@@ -117,7 +117,7 @@ struct [[eosio::table, eosio::contract("provableconn")]] spubkey
 
 
 /**************************************************
- *                ORACLIZE  TABLE                 *
+ *                PROVABLE  TABLE                 *
  *                   Definition                   *
  **************************************************/
 
@@ -324,7 +324,7 @@ std::vector<uint8_t> checksum256_to_vector32(const eosio::checksum256 cs)
  *               INTERNAL FUNCTIONS               *
  *                  Definitions                   *
  **************************************************/
-eosio::checksum256 __oraclize_randomDS_getSessionPubkeyHash()
+eosio::checksum256 __provable_randomDS_getSessionPubkeyHash()
 {
     ds_spubkey spubkeys("provableconn"_n, "provableconn"_n.value);
     name index = "1"_n; // only one value in the table with key = 1
@@ -337,7 +337,7 @@ eosio::checksum256 __oraclize_randomDS_getSessionPubkeyHash()
     return sessionPubkeyHash;
 }
 
-uint32_t __oraclize_getSenderNonce(name sender)
+uint32_t __provable_getSenderNonce(name sender)
 {
     ds_snonce last_nonces("provableconn"_n, "provableconn"_n.value);
     auto itr = last_nonces.find(sender.value);
@@ -349,9 +349,9 @@ uint32_t __oraclize_getSenderNonce(name sender)
     return nonce;
 }
 
-eosio::checksum256 __oraclize_getNextQueryId(const name sender)
+eosio::checksum256 __provable_getNextQueryId(const name sender)
 {
-    const uint32_t nonce = __oraclize_getSenderNonce(sender); // get values to generate the queryId
+    const uint32_t nonce = __provable_getSenderNonce(sender); // get values to generate the queryId
     const size_t tx_size = transaction_size();
     uint8_t tbh[sizeof(sender) + sizeof(nonce) + sizeof(tx_size)]; // calculate the hash of the previous values
     std::memcpy(tbh, &sender, sizeof(sender));
@@ -362,9 +362,8 @@ eosio::checksum256 __oraclize_getNextQueryId(const name sender)
 }
 
 // Check that the queryId being passed matches with the one in the customer local table, return true/false accordingly
-bool __oraclize_queryId_match(const std::string _queryId, const name sender)
+bool __provable_queryId_match(const eosio::checksum256 queryId, const name sender)
 {
-    const eosio::checksum256 queryId = hexstring_to_checksum256(_queryId);
     name myQueryId_short;
     std::memcpy(&myQueryId_short, &queryId, sizeof(myQueryId_short));
     // Access the local query table and find the right row
@@ -391,7 +390,7 @@ bool __oraclize_queryId_match(const std::string _queryId, const name sender)
         return true;
 }
 
-void __oraclize_queryId_localEmplace(const eosio::checksum256 myQueryId, const name sender)
+void __provable_queryId_localEmplace(const eosio::checksum256 myQueryId, const name sender)
 {
     // Retreive the short queryId to use it as an index
     name myQueryId_short;
@@ -407,12 +406,12 @@ void __oraclize_queryId_localEmplace(const eosio::checksum256 myQueryId, const n
 
 
 /**************************************************
- *                  Oraclize Query                *
+ *                  Provable Query                *
  *                    Strings                     *
  **************************************************/
-eosio::checksum256 __oraclize_query(const name user, const unsigned int timestamp, const std::string datasource, const std::string query, const uint8_t prooftype, const name sender)
+eosio::checksum256 __provable_query(const name user, const unsigned int timestamp, const std::string datasource, const std::string query, const uint8_t prooftype, const name sender)
 {
-    const eosio::checksum256 queryId = __oraclize_getNextQueryId(sender);
+    const eosio::checksum256 queryId = __provable_getNextQueryId(sender);
     action(permission_level{user, "active"_n},
         "provableconn"_n,
         "querystr"_n,
@@ -421,29 +420,29 @@ eosio::checksum256 __oraclize_query(const name user, const unsigned int timestam
     return queryId;
 }
 
-eosio::checksum256 __oraclize_query(const name user, const std::string datasource, const std::string query, const name sender)
+eosio::checksum256 __provable_query(const name user, const std::string datasource, const std::string query, const name sender)
 {
-    return __oraclize_query(user, 0, datasource, query, 0, sender);
+    return __provable_query(user, 0, datasource, query, 0, sender);
 }
 
-eosio::checksum256 __oraclize_query(const name user, const unsigned int timestamp, const std::string datasource, const std::string query, const name sender)
+eosio::checksum256 __provable_query(const name user, const unsigned int timestamp, const std::string datasource, const std::string query, const name sender)
 {
-    return __oraclize_query(user, timestamp, datasource, query, 0, sender);
+    return __provable_query(user, timestamp, datasource, query, 0, sender);
 }
 
-eosio::checksum256 __oraclize_query(const name user, const std::string datasource, const std::string query, const uint8_t prooftype, const name sender)
+eosio::checksum256 __provable_query(const name user, const std::string datasource, const std::string query, const uint8_t prooftype, const name sender)
 {
-    return __oraclize_query(user, 0, datasource, query, prooftype, sender);
+    return __provable_query(user, 0, datasource, query, prooftype, sender);
 }
 
 
 /**************************************************
- *                 Oraclize Query                 *
+ *                 Provable Query                 *
  *                   Bytearrays                   *
  **************************************************/
-eosio::checksum256 __oraclize_query(const name user, const unsigned int timestamp, const std::string datasource, const vector<uint8_t> query, const uint8_t prooftype, const name sender)
+eosio::checksum256 __provable_query(const name user, const unsigned int timestamp, const std::string datasource, const vector<uint8_t> query, const uint8_t prooftype, const name sender)
 {
-    const eosio::checksum256 queryId = __oraclize_getNextQueryId(sender);
+    const eosio::checksum256 queryId = __provable_getNextQueryId(sender);
     printhex(query.data(), query.size());
     auto n = name{user};
     const std::string str = n.to_string();
@@ -455,27 +454,27 @@ eosio::checksum256 __oraclize_query(const name user, const unsigned int timestam
     return queryId;
 }
 
-eosio::checksum256 __oraclize_query(const name user, const std::string datasource, const vector<uint8_t> query, const name sender)
+eosio::checksum256 __provable_query(const name user, const std::string datasource, const vector<uint8_t> query, const name sender)
 {
-    return __oraclize_query(user, 0, datasource, query, 0, sender);
+    return __provable_query(user, 0, datasource, query, 0, sender);
 }
 
-eosio::checksum256 __oraclize_query(const name user, const unsigned int timestamp, const std::string datasource, const vector<uint8_t> query, const name sender)
+eosio::checksum256 __provable_query(const name user, const unsigned int timestamp, const std::string datasource, const vector<uint8_t> query, const name sender)
 {
-    return __oraclize_query(user, timestamp, datasource, query, 0, sender);
+    return __provable_query(user, timestamp, datasource, query, 0, sender);
 }
 
-eosio::checksum256 __oraclize_query(const name user, const std::string datasource, const vector<uint8_t> query, const uint8_t prooftype, const name sender)
+eosio::checksum256 __provable_query(const name user, const std::string datasource, const vector<uint8_t> query, const uint8_t prooftype, const name sender)
 {
-    return __oraclize_query(user, 0, datasource, query, prooftype, sender);
+    return __provable_query(user, 0, datasource, query, prooftype, sender);
 }
 
 
 /**************************************************
- *                 Oraclize Query                 *
+ *                 Provable Query                 *
  *                   Random DS                    *
  **************************************************/
-void __oraclize_randomDS_setCommitment(const eosio::checksum256 queryId, const eosio::checksum256 commitment, const name payer)
+void __provable_randomDS_setCommitment(const eosio::checksum256 queryId, const eosio::checksum256 commitment, const name payer)
 {
     name myQueryId_short; // Calculate the short queryId, to use it as a key of the table
     std::memcpy(&myQueryId_short, &queryId.get_array()[0], sizeof(myQueryId_short));
@@ -487,19 +486,19 @@ void __oraclize_randomDS_setCommitment(const eosio::checksum256 queryId, const e
     });
 }
 
-eosio::checksum256 __oraclize_newRandomDSQuery(const name user, const uint32_t _delay, const uint8_t _nbytes, const name sender)
+eosio::checksum256 __provable_newRandomDSQuery(const name user, const uint32_t _delay, const uint8_t _nbytes, const name sender)
 {
     // 1. NBYTES - Convert nbytes to bytearray
     std::vector<uint8_t> nbytesBa(1);
     nbytesBa[0] = _nbytes;
 
     // 2. SESSIONKEYHASH - Get the sessionKeyHash from the ledger public key.
-    const eosio::checksum256 sessionPubkeyHash = __oraclize_randomDS_getSessionPubkeyHash();
+    const eosio::checksum256 sessionPubkeyHash = __provable_randomDS_getSessionPubkeyHash();
     std::vector<uint8_t> sessionPubkeyHashBa(32);
     std::vector<uint8_t> sessionPubkeyHashBa2(32);
     sessionPubkeyHashBa = checksum256_to_vector32(sessionPubkeyHash);
 
-    // 3. UNONCE - Need something block dependent so we decided to perform the hash of those 4 block dependent fields. This value have to be unpredictable from Oraclize
+    // 3. UNONCE - Need something block dependent so we decided to perform the hash of those 4 block dependent fields. This value have to be unpredictable from Provable
     const size_t tx_size = transaction_size();
     const int tapos_block_num_ = tapos_block_num();
     const int tapos_block_prefix_ = tapos_block_prefix();
@@ -516,7 +515,7 @@ eosio::checksum256 __oraclize_newRandomDSQuery(const name user, const uint32_t _
     std::vector<uint8_t> delayBaBigEndian(32);
     delayBaBigEndian = uint32_to_vector32_bigendian(delayLedgerTime);
 
-    // Set args2 to be passed as params of the oraclize "random" query
+    // Set args2 to be passed as params of the provable "random" query
     std::vector<std::vector<uint8_t>> args;
     args.push_back(unonceHashBa);
     args.push_back(nbytesBa);
@@ -526,8 +525,8 @@ eosio::checksum256 __oraclize_newRandomDSQuery(const name user, const uint32_t _
     for(auto && a : args)
         args2.insert(args2.end(), a.begin(), a.end());
 
-    // Call the oraclize_query and get the queryId
-    const eosio::checksum256 queryId = __oraclize_query(user,"random", args2, proofType_Ledger, sender); // proofType and datasource are always fixed in this function
+    // Call the provable_query and get the queryId
+    const eosio::checksum256 queryId = __provable_query(user,"random", args2, proofType_Ledger, sender); // proofType and datasource are always fixed in this function
 
     // Calculate the commitment and call a function to set it
     std::vector<uint8_t> delayBa(8); // delay converted to 8 byte
@@ -542,12 +541,12 @@ eosio::checksum256 __oraclize_newRandomDSQuery(const name user, const uint32_t _
     std::memcpy(commitmentTbh + delayBa.size() + args[1].size() + 32, &args[2][0], args[2].size()); // 8 + 1 + 32 + 32 (commitmentSlice1 + sessionPubkeyHashBa)
     eosio::checksum256 commitment = sha256((char *)commitmentTbh, sizeof(commitmentTbh)); // Container for the commitment hash
     const name payer = user; // Payer for setting the commitment
-    __oraclize_randomDS_setCommitment(queryId, commitment, payer); // Call the function to set query Id and commitment in the table
+    __provable_randomDS_setCommitment(queryId, commitment, payer); // Call the function to set query Id and commitment in the table
 
     return queryId;
 }
 
-void __oraclize_randomDS_get_signature_component(uint8_t component[32], const uint8_t signature[], const uint8_t signature_len, const uint8_t length_idx)
+void __provable_randomDS_get_signature_component(uint8_t component[32], const uint8_t signature[], const uint8_t signature_len, const uint8_t length_idx)
 {
     eosio::internal_use_do_not_use::eosio_assert(signature_len > length_idx, "Invalid index");
     uint8_t component_len = signature[length_idx];
@@ -555,7 +554,7 @@ void __oraclize_randomDS_get_signature_component(uint8_t component[32], const ui
     std::memcpy(component, &signature[length_idx + 1 + byte_to_jump], component_len - byte_to_jump);
 }
 
-bool __oraclize_randomDS_matchBytes32Prefix(const eosio::checksum256 content, const uint8_t prefix[], const uint8_t prefix_len, const uint8_t n_random_bytes)
+bool __provable_randomDS_matchBytes32Prefix(const eosio::checksum256 content, const uint8_t prefix[], const uint8_t prefix_len, const uint8_t n_random_bytes)
 {
     eosio::internal_use_do_not_use::eosio_assert(prefix_len == n_random_bytes, "Prefix length and random bytes number should match.");
     const eosio::checksum256 content_inverted = invert_checksum256(content);
@@ -577,43 +576,41 @@ bool __oraclize_randomDS_matchBytes32Prefix(const eosio::checksum256 content, co
     return true;
 }
 
-bool __oraclize_randomDS_test_pubkey_signature(const uint8_t whatever, const uint8_t v, const uint8_t r[32], const uint8_t s[32], const eosio::checksum256 digest, const uint8_t pubkey[64])
+bool __provable_randomDS_test_pubkey_signature(const uint8_t whatever, const uint8_t v, const uint8_t r[32], const uint8_t s[32], const eosio::checksum256 digest, const uint8_t pubkey[64])
 {
-    eosio::signature sig;
-
-    sig.type = whatever;
-    sig.data[0] = v;
+    eosio::webauthn_signature sig;
+    sig.auth_data[0] = v;
     for (int i = 0; i < 32; i++)
-      sig.data[i + 1] = r[i];
+      sig.auth_data[i + 1] = r[i];
     for (int i = 0; i < 32; i++)
-      sig.data[i + 1 + 32] = s[i];
+      sig.auth_data[i + 1 + 32] = s[i];
 
-    const eosio::public_key pubkey_recovered = recover_key(digest, sig);
+    const eosio::webauthn_public_key  pubkey_recovered = get<eosio::webauthn_public_key>(recover_key(digest, sig));
 
-    if (pubkey_recovered.data.size() != 33)
+    if (pubkey_recovered.key.size() != 33)
          return false;
-    if (pubkey_recovered.data[0] != 0x02 && pubkey_recovered.data[0] != 0x03)
+    if (pubkey_recovered.key[0] != 0x02 && pubkey_recovered.key[0] != 0x03)
         return false;
     // Discard the first (0x00) and the second byte (0x02 or 0x03)
     for (int i = 0; i < 32; i++)
-        if ((uint8_t)pubkey_recovered.data[i + 1] != pubkey[i])
+        if ((uint8_t)pubkey_recovered.key[i + 1] != pubkey[i])
             return false;
     return true;
 }
 
-bool __oraclize_randomDS_verifySig(const eosio::checksum256 digest, const uint8_t der_signature[], const uint8_t der_signature_len, const uint8_t pubkey[64])
+bool __provable_randomDS_verifySig(const eosio::checksum256 digest, const uint8_t der_signature[], const uint8_t der_signature_len, const uint8_t pubkey[64])
 {
     uint8_t r[32];
     uint8_t s[32];
-    __oraclize_randomDS_get_signature_component(r, der_signature, der_signature_len, 3);
-    __oraclize_randomDS_get_signature_component(s, der_signature, der_signature_len, 4 + der_signature[3] + 1);
+    __provable_randomDS_get_signature_component(r, der_signature, der_signature_len, 3);
+    __provable_randomDS_get_signature_component(s, der_signature, der_signature_len, 4 + der_signature[3] + 1);
     // We try either with v=27 or with v=28
-    bool test_v27 = __oraclize_randomDS_test_pubkey_signature(0, 27, r, s, digest, pubkey);
-    bool test_v28 = __oraclize_randomDS_test_pubkey_signature(0, 28, r, s, digest, pubkey);
+    bool test_v27 = __provable_randomDS_test_pubkey_signature(0, 27, r, s, digest, pubkey);
+    bool test_v28 = __provable_randomDS_test_pubkey_signature(0, 28, r, s, digest, pubkey);
     return test_v27 || test_v28;
 }
 
-uint8_t oraclize_randomDS_proofVerify(const std::string _queryId, const std::vector<uint8_t> result, const std::vector<uint8_t> proof, const name payer)
+uint8_t provable_randomDS_proofVerify(const eosio::checksum256 queryId, const std::vector<uint8_t> result, const std::vector<uint8_t> proof, const name payer)
 {
     /*******************************************************************************************
      *                                                                                         *
@@ -636,10 +633,9 @@ uint8_t oraclize_randomDS_proofVerify(const std::string _queryId, const std::vec
     std::string keyhash_sha_str = checksum256_to_string(keyhash_sha);
     uint8_t *first_word = (uint8_t *) &keyhash_sha.get_array()[0];
     uint8_t *second_word = (uint8_t *) &keyhash_sha.get_array()[1];
-    std::string context_name_str = ORACLIZE_NETWORK_NAME;
+    std::string context_name_str = PROVABLE_NETWORK_NAME;
     char context_name[context_name_str.size()];
     context_name_str.copy(context_name, context_name_str.size());
-    const eosio::checksum256 queryId = hexstring_to_checksum256(_queryId);
     uint8_t tbh2[sizeof(context_name) + 32];
     std::memcpy(tbh2, &context_name, sizeof(context_name));
     std::memcpy(tbh2 + sizeof(context_name), &queryId.get_array()[0], 16);
@@ -666,7 +662,7 @@ uint8_t oraclize_randomDS_proofVerify(const std::string _queryId, const std::vec
     uint8_t sig1[sig1_len];
     std::memcpy(sig1, &proof.data()[ledgerProofLength + (32 + 8 + 1 + 32)], sig1_len);
     eosio::checksum256 sig1_hash = sha256((char *)sig1, sizeof(sig1));
-    if (!__oraclize_randomDS_matchBytes32Prefix(sig1_hash, result.data(), result.size(), proof[ledgerProofLength + 32 + 8]))
+    if (!__provable_randomDS_matchBytes32Prefix(sig1_hash, result.data(), result.size(), proof[ledgerProofLength + 32 + 8]))
         return 3;
 
 
@@ -720,7 +716,7 @@ sizeof(sessionPubKey))); // Calculate the key hash
     uint8_t toSign1[32 + 8 + 1 + 32];
     std::memcpy(toSign1, &proof.data()[ledgerProofLength], sizeof(toSign1));
     eosio::checksum256 toSign1_hash = sha256((char *)toSign1, sizeof(toSign1));
-    if (!__oraclize_randomDS_verifySig(toSign1_hash, sig1, sizeof(sig1), sessionPubKey))
+    if (!__provable_randomDS_verifySig(toSign1_hash, sig1, sizeof(sig1), sessionPubKey))
         return 5;
 
 
@@ -739,7 +735,7 @@ sizeof(sessionPubKey))); // Calculate the key hash
     std::memcpy(toSign2 + 1, &proof.data()[sig2offset - 65], 65);
     std::memcpy(toSign2 + 65 + 1, CODE_HASH_RANDOMDS, 32);
     eosio::checksum256 toSign2_hash = sha256((char *)toSign2, sizeof(toSign2));
-    if (!__oraclize_randomDS_verifySig(toSign2_hash, sig2, sizeof(sig2), appkey_pubkey))
+    if (!__provable_randomDS_verifySig(toSign2_hash, sig2, sizeof(sig2), appkey_pubkey))
         return 6;
 
 
@@ -754,7 +750,7 @@ sizeof(sessionPubKey))); // Calculate the key hash
     uint8_t sig3[proof[3 + 65 + 1] + 2];
     std::memcpy(sig3, &proof.data()[3 + 65], sizeof(sig3));
     eosio::checksum256 toSign3_hash = sha256((char *)toSign3, sizeof(toSign3));
-    if (!__oraclize_randomDS_verifySig(toSign3_hash, sig3, sizeof(sig3), LEDGERKEY))
+    if (!__provable_randomDS_verifySig(toSign3_hash, sig3, sizeof(sig3), LEDGERKEY))
         return 7;
 
 

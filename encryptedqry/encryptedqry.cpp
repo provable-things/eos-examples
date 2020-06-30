@@ -11,7 +11,7 @@ class encryptedqry : public eosio::contract
       void execquery()
       {
           print("Sending encrypted query to Provable...");
-          oraclize_query(
+          provable_query(
             "URL",
             "BI1E+MtXQJXDFHVm38/YRZHMVe3s99a0rmQbdtUaa3w+EL/JALVJrvAKVIJi8OxON8vTo5K8x9P78qwQXovsDazeyV8tybIbcO6GlEy/tQXvtHClCPFjQREZ7uZfVd+0wWB1dqQO/WxCunCfgj8uiGFNQrlwwmyqc6/A/9lUUfoTf/koCI44sIOvsybELCg0m1ICaGKx1GhC8qJkChQwkACbY6Y=",\
             (proofType_Native)
@@ -31,5 +31,3 @@ class encryptedqry : public eosio::contract
           print(" Proof length: ", proof.size());
       }
 };
-
-EOSIO_DISPATCH(encryptedqry, (execquery)(callback))
