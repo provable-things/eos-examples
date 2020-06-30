@@ -9,7 +9,7 @@ In C++ it is as simple as importing __`provable/eos_api.hpp`__ in your contract 
 
 This provisions your contract with the __`provable_query()`__ function (and many others!), which makes it trivial to leverage our technology straight away.
 
-:computer: Happy developing!
+:tada: Happy developing!
 
 ***
 
@@ -21,7 +21,7 @@ The oracle service is currently available on:
 * EOS Jungle 3 Testnet
 * EOS Kylin Testnet
 
-### :globe_with_meridians: __CDT Availability__
+### :computer: __CDT Availability__
 
 The `master` branch is currently referring to EOSIO.CDT 1.7, please check the releases for the specific CDT version:
 
