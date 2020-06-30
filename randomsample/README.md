@@ -24,16 +24,16 @@ The `randomsample.cpp` example allows you to *retrieve a random number*.
 
 ## :pen: Notes
 
-Provable replies to your `oraclize_newRandomDSQuery` by calling your `callback(...)` with the *random number result*.
+Provable replies to your `provable_newRandomDSQuery` by calling your `callback(...)` with the *random number result*.
 You can search your transaction ID in one of the following links to verify it:
 
-* :mag_right::ledger: [Blocks.io](https://jungle.bloks.io/): A block explorer for the Jungle 2.0 testnet.
+* :mag_right::ledger: [Jungle 3 Blocks.io](https://jungle3.bloks.io/): A block explorer for the Jungle 3.0 testnet.
 
-* :palm_tree::lion::palm_tree: [Jungle 2.0](https://monitor.jungletestnet.io/#home): A transaction explorer is available by selecting *Get TX* on the Jungle 2.0 testnet website.
+* :mag_right::ledger: [Kylin Blocks.io](https://kylin.bloks.io/): A block explorer for the Kylin testnet.
 
 ## :ambulance: Support
 
-❍  If you have any issues, head on over to our [Gitter](https://gitter.im/oraclize/eos-api) channel to get timely support!
+❍  If you have any issues, head on over to our [Gitter](https://gitter.im/provable/eos-api) channel to get timely support!
 
 ***Happy developing!***
 

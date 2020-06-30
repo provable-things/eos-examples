@@ -1,4 +1,4 @@
-#define ORACLIZE_NETWORK_NAME "eosio_testnet_jungle"
+#define PROVABLE_NETWORK_NAME "eosio_testnet_jungle"
 #define CONTRACT_NAME "randomsample"
 
 #include "provable/eos_api.hpp"
@@ -15,8 +15,8 @@ class randomsample : public eosio::contract
     {
         print("Sending query to Provable...");
         uint8_t N = 1; // Possible outputs: [0-255]
-        uint32_t delay = 10;
-        oraclize_newRandomDSQuery(delay, N);
+        uint32_t delay = 0;
+        provable_newRandomDSQuery(delay, N);
     }
 
     [[eosio::action]]
@@ -27,9 +27,10 @@ class randomsample : public eosio::contract
     )
     {
         require_auth(provable_cbAddress());
-        if (oraclize_randomDS_proofVerify(queryId, result, proof, _self) != 0)
+        if (provable_randomDS_proofVerify(queryId, result, proof, _self) != 0)
         {
             // The proof verification has failed, manage this use case...
+            print("Number: ", result[0]);
             print(" Proof failed has failed...");
         }
         else
@@ -38,5 +39,3 @@ class randomsample : public eosio::contract
         }
     }
 };
-
-EOSIO_DISPATCH(randomsample, (getrandnum)(callback))

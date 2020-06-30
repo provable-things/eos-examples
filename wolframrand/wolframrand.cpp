@@ -10,7 +10,7 @@ class wolframrand : public eosio::contract
     [[eosio::action]]
     void getrandomnum()
     {
-        oraclize_query(10, "WolframAlpha", "random number between 1 and 6");
+        provable_query(10, "WolframAlpha", "random number between 1 and 6");
         print(" Provable query was sent, standing by for the answer...");
     }
 
@@ -28,5 +28,3 @@ class wolframrand : public eosio::contract
           getrandomnum();
     }
 };
-
-EOSIO_DISPATCH(wolframrand, (getrandomnum)(callback))

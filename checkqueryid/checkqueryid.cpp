@@ -12,8 +12,8 @@ class checkqueryid : public eosio::contract
     [[eosio::action]]
     void checkquery()
     {
-        eosio::checksum256 myQueryId = oraclize_query("URL", "json(https://api.kraken.com/0/public/Ticker?pair=EOSUSD).result.EOSUSD.l.0");
-        oraclize_queryId_localEmplace(myQueryId);
+        eosio::checksum256 myQueryId = provable_query("URL", "json(https://api.kraken.com/0/public/Ticker?pair=EOSUSD).result.EOSUSD.l.0");
+        provable_queryId_localEmplace(myQueryId);
         print(" Provable query was sent & queryId saved in the queryId table as a record, standing by for the answer...");
     }
 
@@ -25,7 +25,7 @@ class checkqueryid : public eosio::contract
     )
     {
         require_auth(provable_cbAddress());
-        if (!oraclize_queryId_match(queryId))
+        if (!provable_queryId_match(queryId))
         {
             // The query Id match has failed, manage this use case...
             print(" Unexpected query ID!");
@@ -37,5 +37,3 @@ class checkqueryid : public eosio::contract
         }
     }
 };
-
-EOSIO_DISPATCH(checkqueryid, (checkquery)(callback))

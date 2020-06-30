@@ -18,7 +18,7 @@ class bitcoincomp : public eosio::contract
         };
         std::vector<unsigned char> query = provable_set_computation_args(args);
         print("Sending query to Provable...");
-        oraclize_query("computation", query);
+        provable_query("computation", query);
     }
 
     [[eosio::action]]
@@ -34,5 +34,3 @@ class bitcoincomp : public eosio::contract
          print("Account balance:", result_str);
     }
 };
-
-EOSIO_DISPATCH(bitcoincomp, (compute)(callback))
