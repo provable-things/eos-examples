@@ -6,12 +6,12 @@ The `encryptedqry.cpp` example allows you to *send an encrypted query*.
 
 &nbsp;
 
-## :squirrel: _Query Encryption_
+## :lock: _Query Encryption_
 
 **1)** Decide the Provable query you want to encrypt, the one in this example is:
 
 ```
-oraclize_query(
+provable_query(
   "URL",
   "json(https://min-api.cryptocompare.com/data/price?fsym=EOS&tsyms=USD&sign=true).USD",\
   (proofType_Native)
@@ -45,7 +45,7 @@ BI1E+MtXQJXDFHVm38/YRZHMVe3s99a0rmQbdtUaa3w+EL/JALVJrvAKVIJi8OxON8vTo5K8x9P78qwQ
 **5)** Use the previous non-deterministic output and plug it into the query function:
 
 ```
-oraclize_query(
+provable_query(
   "URL",
   "BI1E+MtXQJXDFHVm38/YRZHMVe3s99a0rmQbdtUaa3w+EL/JALVJrvAKVIJi8OxON8vTo5K8x9P78qwQXovsDazeyV8tybIbcO6GlEy/tQXvtHClCPFjQREZ7uZfVd+0wWB1dqQO/WxCunCfgj8uiGFNQrlwwmyqc6/A/9lUUfoTf/koCI44sIOvsybELCg0m1ICaGKx1GhC8qJkChQwkACbY6Y=",\
   (proofType_Native)
@@ -78,12 +78,12 @@ __`❍ cleos push action <your-account-name> execquery '[]' -p <your-account-nam
 
 ## :pen: Notes
 
-Provable replies to your `oraclize_query` by calling your `callback(...)` with the *request status result* .
+Provable replies to your `provable_query` by calling your `callback(...)` with the *request status result* .
 You can search for your transaction ID in one of the following links to verify it:
 
-* :mag_right::ledger: [Blocks.io](https://jungle.bloks.io/): A block explorer for the Jungle 2.0 testnet.
+* :mag_right::ledger: [Blocks.io](https://jungle3.bloks.io/): A block explorer for the Jungle 3.0 testnet.
 
-* :palm_tree::lion::palm_tree: [Jungle 2.0](https://monitor.jungletestnet.io/#home): A transaction explorer is available by selecting *Get TX* on the Jungle 2.0 testnet website.
+* :palm_tree::lion::palm_tree: [Jungle 3.0](https://monitor3.jungletestnet.io/#home): A transaction explorer is available by selecting *Get TX* on the Jungle 3.0 testnet website.
 
 ## :ambulance: Support
 
